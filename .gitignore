@@ -1,0 +1,10 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/.idea/.idea.SpecFlowLearning/.idea/.gitignore
+/.idea/.idea.SpecFlowLearning/.idea/indexLayout.xml
+/SpecFlowLearning/Steps/LoginProductionFeatureSteps.cs
+/SpecFlowLearning.sln.DotSettings.user
+/.idea/.idea.SpecFlowLearning/.idea/vcs.xml
