@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Reqnroll;
 
 namespace SpecFlowLearning.Steps
@@ -12,9 +13,10 @@ namespace SpecFlowLearning.Steps
             Console.WriteLine($"Navigation to login page");
         }
 
-        [When("I enter the username and password")]
-        public void WhenIEnterTheUsernameAndPassword()
+        [When("I enter the (.*) and (.*)")]
+        public void WhenIEnterTheUsernameAndPassword(string name, string password)
         {
+            Console.WriteLine($"Username: {name}, Password: {password}");
             Console.WriteLine($"Input valid user credentials");
         }
 
@@ -22,6 +24,30 @@ namespace SpecFlowLearning.Steps
         public void ThenIShouldBeRedirectedToTheDashboard()
         {
             Console.WriteLine($"Redirected to dashboard");
+        }
+
+        [Then("select the city and country information")]
+        public void ThenSelectTheCityAndCountryInformation(Table table)
+        {
+            // 1st approach - looping over the elements
+            // This method will print all values within the same test case run
+            /*foreach (var row in table.Rows)
+            {
+                var city = row["city"];
+                var country = row["country"];
+
+                Console.WriteLine($"City: {city}, Country: {country}");
+                Console.WriteLine("------------------------------------");
+            }*/
+
+            // 2nd approach - row wise iteration
+            // This method will print only the specified row values
+            var data = table.Rows[1].ToDictionary(row => row.Key, row => row.Value);
+            var city = data["city"];
+            var country = data["country"];
+
+            Console.WriteLine($"City: {city}, Country: {country}");
+            Console.WriteLine("------------------------------------");
         }
     }
 }
