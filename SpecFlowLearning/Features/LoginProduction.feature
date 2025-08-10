@@ -3,6 +3,7 @@ In order to perform successful login on Production
 As a User
 I have to enter correct username and password
 
+    @prod
     Scenario: Login to the production website
         Given user navigates to facebook website
         When user validates the homepage title
